@@ -1,0 +1,133 @@
+ul li{
+  display: inline-block; 
+}
+
+.nav{
+  text-align: right;
+  height: 48px;
+  line-height: 2em;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 100;
+  background-color: #93006A; 
+}
+
+.menu{
+  margin: 0 25px 0 0; 
+}
+
+.menu a{
+  text-decoration: none;
+  color: #FFE5FD;
+  margin: 10px;
+  line-height: 50px;
+  clear: both; /*hoppar ner en rad, rensar det som är till höger/vänster, eller båda*/
+} 
+
+.nav a:hover{
+  color: #926C82; 
+} 
+
+.menu li:hover .submenu{
+  display: block; /*dropdown menyn visas*/
+  animation: load .5s forwards; 
+} 
+
+
+@keyframes load {
+  0%{
+    transform: translate(0px, -50%) scale(1);
+  }
+  100%{
+    opacity: 1;
+    transform: translate(0px);
+  }  
+}
+
+
+.submenu{
+  padding-left: 50px;
+  position: absolute;
+  display: none; /*menyn visas bara när man hovrar*/
+  z-index: 100;
+  margin-top: -2px; 
+  background: #93006A;
+}
+
+.submenu li{
+  display: block; 
+  text-align: left;
+  text-indent: -2.7em;
+  width: 60px; 
+}
+
+label{
+  margin: 0 25px 0 0;
+  font-size: 26px;
+  line-height: 50px;
+  display: none; /*gömma hamburgaren*/
+  float: right; }
+
+#menu-toggle{
+  display: none; /*gömma klickrutan*/
+}
+
+@media only screen and (max-width : 600px){
+
+  .menu{
+    text-align: center;
+    width: 100vw;
+    display: none;
+    background: #93006A; 
+    padding: 40px 0 0; } /*kan man ha något annat här eller typ content align nån annan stans?"*/
+
+  .menu a{
+    display: block;
+    border-bottom: solid 1px #926C82;
+    margin: 0;
+  }
+
+  .submenu{
+    position: inherit; /*på plats efter about*/
+    display: none; /*blir fixed på skärmen men tar man bort den kommer menyn fram om man hovrar*/
+    background-color: #FFE5; 
+    padding: 0;
+    margin: 0;
+  }
+
+  .submenu li {
+    display: block; 
+    text-align: center;
+  }
+
+  .submenu a{
+    border-bottom: solid 1px #926C82;
+    width: 100vw;
+    color: #FFE5FD;
+    font-style: italic;
+    padding-left: 25px;
+    
+  }
+
+
+  ul li {
+    display: block; }
+
+  .menu li:hover .submenu{
+    animation: none; 
+  }
+
+
+  label{
+    display: block;
+    cursor: pointer;
+    color: #FFE5FD; 
+  }
+
+  #menu-toggle:checked + .menu{
+    display: block;
+  }
+}    
+
