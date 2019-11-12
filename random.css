@@ -2,7 +2,7 @@ ul li{
   display: inline-block; 
 }
 
-.nav{
+.headernav{
   text-align: right;
   height: 48px;
   line-height: 2em;
@@ -11,14 +11,14 @@ ul li{
   left: 0;
   width: 100vw;
   z-index: 100;
-  background-color: #93006A; 
+  background-color: #93006A;
 }
 
-.menu{
+.headermenu{
   margin: 0 25px 0 0; 
 }
 
-.menu a{
+.headermenu a{
   text-decoration: none;
   color: #FFE5FD;
   margin: 10px;
@@ -26,14 +26,14 @@ ul li{
   clear: both; /*hoppar ner en rad, rensar det som är till höger/vänster, eller båda*/
 } 
 
-.nav a:hover{
+.headernav a:hover{
   color: #926C82; 
 } 
 
-.menu li:hover .submenu{
+.headermenu li:hover .headersubmenu{
   display: block; /*dropdown menyn visas*/
   animation: load .5s forwards; 
-} 
+}
 
 
 @keyframes load {
@@ -47,7 +47,7 @@ ul li{
 }
 
 
-.submenu{
+.headersubmenu{
   padding-left: 50px;
   position: absolute;
   display: none; /*menyn visas bara när man hovrar*/
@@ -56,78 +56,134 @@ ul li{
   background: #93006A;
 }
 
-.submenu li{
+.headersubmenu li{
   display: block; 
   text-align: left;
   text-indent: -2.7em;
   width: 60px; 
 }
 
-label{
-  margin: 0 25px 0 0;
+.hamburger{  
   font-size: 26px;
   line-height: 50px;
+  position: absolute;
+  top: 0em;
+  right: 1em;
+  text-align: right;
+  width: 100vw;
+  
   display: none; /*gömma hamburgaren*/
-  float: right; }
+  float: right; 
+}
 
-#menu-toggle{
+.menuplus{
+  font-size: 15px;
+  line-height: 50px;
+  position: absolute;
+  top: 6.2em;
+  right: 2em;
+  text-align: right;
+  width: 15vw;
+  display: none; /*gömma plusknappen*/
+}
+
+.hamburger2{
+  font-size: 20px;
+  line-height: 100vw;
+  position: absolute;
+  right: 2em;
+  text-align: right;
+  width: 100vw;
+  display: none; /*gömma plusknappen*/
+}
+
+
+#menu-toggle, #submenu-toggle{
   display: none; /*gömma klickrutan*/
 }
 
+
 @media only screen and (max-width : 600px){
 
-  .menu{
+  .headermenu{
     text-align: center;
     width: 100vw;
     display: none;
-    background: #93006A; 
+    /*background: #93006A; */
     padding: 40px 0 0; } /*kan man ha något annat här eller typ content align nån annan stans?"*/
 
-  .menu a{
+  .headermenu a{
     display: block;
     border-bottom: solid 1px #926C82;
     margin: 0;
   }
+  
+  
+  .headermenu a{
+  background-color: #93006A;
+}
 
-  .submenu{
+  .headermenu #transp {
+    opacity: 0;
+  }
+
+  .headersubmenu{
     position: inherit; /*på plats efter about*/
     display: none; /*blir fixed på skärmen men tar man bort den kommer menyn fram om man hovrar*/
-    background-color: #FFE5; 
     padding: 0;
     margin: 0;
   }
 
-  .submenu li {
+  .headersubmenu li {
     display: block; 
     text-align: center;
   }
 
-  .submenu a{
+  .headersubmenu a{
     border-bottom: solid 1px #926C82;
     width: 100vw;
+    background-color: #FFE5;
     color: #FFE5FD;
     font-style: italic;
     padding-left: 25px;
-    
   }
 
+  .headermenu li:hover .headersubmenu{
+    display: none;
+  } 
+  
+  .headermenu #menuabout:target .headersubmenu{
+    display: block;
+  }
+  
+  .headermenu li:hover .headersubmenu{
+  animation: none; 
+}
 
   ul li {
-    display: block; }
-
-  .menu li:hover .submenu{
-    animation: none; 
+    display: block; 
   }
 
-
-  label{
+  .hamburger, .menuplus{
     display: block;
     cursor: pointer;
-    color: #FFE5FD; 
+    color: #FFE5FD;
+  }
+  
+  .hamburger2{
+    display: block;
+    position: inherit; 
   }
 
-  #menu-toggle:checked + .menu{
+  #menu-toggle:checked + .headermenu{
     display: block;
   }
+  
+
+  #submenu-toggle:checked + .headersubmenu{
+    display: block;
+  }
+
 }    
+
 
